@@ -1,0 +1,14 @@
+{
+    "name": "smrtx-task-angular",
+    "version": "1.0.0",
+    "dependencies": {
+        "angular-material": "latest",
+        "font-awesome": "latest",
+        "animate.css": "latest",
+        "angular": "latest",
+        "angular-ui-router": "latest"
+    },
+    "resolutions": {
+        "angular": "1.5.0"
+    }
+}
