@@ -15,6 +15,5 @@
                 controller: 'CustomerController'
             });
         $locationProvider.html5Mode(true);
-       // $urlRouterProvider.otherwise('/');
     }
 })();
