@@ -6,9 +6,8 @@ md-card-actions.layout-align-end-center.layout-row {
     padding-bottom: 10px;
 }
 
-.order-item .face {
+.face {
   border-radius: 30px;
-  border: 1px solid #ddd;
   width: 48px;
   margin: 16px;
 }

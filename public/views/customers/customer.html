@@ -5,7 +5,7 @@
             <span class="md-subhead">{{customer.email}}</span>
         </md-card-title-text>
         <div layout="column" layout-align="start center" flex>
-            <md-button ng-click="" class="md-raised md-primary">Edit</md-button>
+            <md-button ui-sref="editCustomer({ customer_name: customer.name })" class="md-raised md-primary">Edit</md-button>
             <md-button ng-click="deleteCustomer(customer.name, $index, $event)"  class="md-fab md-mini md-warn md-hue-2">
                 <ng-md-icon icon="clear" style="fill: white" size="30"></ng-md-icon>
             </md-button>

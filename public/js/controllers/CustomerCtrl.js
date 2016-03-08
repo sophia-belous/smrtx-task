@@ -2,7 +2,9 @@
     'use strict';
     angular.module('CustomerCtrl', [])
         .controller('CustomerController', CustomerController)
-        .controller('CustomerEditController', CustomerEditController);
+        .controller('CustomerAddController', CustomerAddController)
+        .controller('CustomerEditController', CustomerEditController)
+        ;
      
         function CustomerController($scope, $mdDialog, Customer) {
             Customer.getAll(function(customers) {
@@ -10,7 +12,7 @@
                 console.log($scope.customers);
             });
             
-            $scope.customers = [];       
+            $scope.customers = [];    
             
             $scope.deleteCustomer = function(customerName, index, event) {
                 var confirm = $mdDialog.confirm()
@@ -31,13 +33,25 @@
         }
         
         function CustomerEditController($scope, $state, $stateParams, Customer) {
-            
-            $scope.customer = Customer.getOne($stateParams.customer_name);
-            $scope.updateCustomer = function() {
-                Customer.update($stateParams.customer_name, $scope.customer, function() {
-                    $state.go('customers');
-                }); 
+            $scope.customer = {};
+            Customer.getOne($stateParams.customer_name, function(customer) {
+                $scope.customer = customer;
                 
-            }                                    
+                $scope.updateCustomer = function() {
+                    Customer.update($stateParams.customer_name, $scope.customer, function() {
+                        $state.go('customers');
+                    });         
+                };   
+            });                                             
+        }
+        
+        function CustomerAddController($scope, $state, $stateParams, Customer) {
+            $scope.customer = {};
+                
+            $scope.addCustomer = function() {
+                Customer.add($scope.customer, function() {
+                    $state.go('customers');
+                });         
+            };     
         }
 })();

@@ -1,0 +1,8 @@
+<div class="md-toolbar-tools">
+    <h2><span>Customers</span></h2>
+    <span flex></span>
+    <md-button  ui-sref="addCustomer" class="md-raised md-primary" aria-label="Add new customer">Add new Customer</md-button>
+</div> 
+<md-content  class="md-padding" layout="row" layout-wrap>
+    <wm-customer style="width: 400px" ng-repeat="customer in customers"></wm-customer>
+</md-content>

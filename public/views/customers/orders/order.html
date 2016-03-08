@@ -1,0 +1,12 @@
+<md-list-item class="md-3-line order-item">
+    <img ng-src="http://alittlebit.ru/upload/iblock/c18/1448305688166385098.gif" class="face">
+    <div class="md-list-item-text">
+        <h3>{{order.description}}</h3>
+        <p>{{order.price | currency}}</p>
+    </div>
+    <div class="md-secondary">
+        <md-button ui-sref="editOrder({ customer_name: order._customername, order_id: order._id })">Edit</md-button> 
+        <md-button ui-sref="" ng-click="deleteOrder(order._id, $index, $event)">Delete</md-button> 
+    </div>
+    <md-divider md-inset ng-if="!$last"></md-divider>
+</md-list-item>
