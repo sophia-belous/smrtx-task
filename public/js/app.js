@@ -1,4 +1,4 @@
 (function() {
     'use strict';
-    angular.module('smrtxApp', ['ui.router', 'ngMaterial', 'appRoutes', 'MainCtrl', 'CustomerCtrl', 'CustomerService']);
+    angular.module('smrtxApp', [ 'restangular', 'ui.router','ngMaterial', 'ngMdIcons', 'appDirectives', 'appRoutes', 'MainCtrl', 'CustomerCtrl', 'OrderCtrl', 'CustomerService']);
 })();

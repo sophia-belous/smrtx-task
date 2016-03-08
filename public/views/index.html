@@ -6,21 +6,36 @@
         <base href="/">
         <title>MEAN Application</title>
         
-        <link rel="stylesheet" href="./libs/angular-material/angular-material,min.css">        
+        <link rel="stylesheet" href="./libs/angular-material/angular-material.min.css">        
         <link rel="stylesheet" href="./css/style.css">
         
     </head>
-    <body ng-app="smrtxApp" ng-controller="MainController">
+    <body ng-app="smrtxApp" ng-cloak ng-controller="MainController">
+        <md-toolbar md-scroll-shrink ng-if="true">
+            <div class="md-toolbar-tools">
+                <h3><span>Customer Manager</span></h3>
+                <span flex></span>
+                <md-button ng-click="addCustomer()" class="md-raised" aria-label="Learn More">Add new customer</md-button>
+            </div>
+        </md-toolbar>
         <div ui-view></div>
+        
         <script src="./libs/angular/angular.min.js"></script>    
-        <script src="./libs/angular-ui-router/release/angular-ui-router.min.js"></script>            
+        <script src="./libs/angular-ui-router/release/angular-ui-router.min.js"></script>    
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>         
         <script src="./libs/angular-aria/angular-aria.min.js"></script>
         <script src="./libs/angular-animate/angular-animate.min.js"></script>
         <script src="./libs/angular-material/angular-material.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+        <script src="./libs/lodash/lodash.min.js"></script>
+        <script src="./libs/restangular/dist/restangular.min.js"></script>
+        <script src="./libs/restangular/dist/restangular.js"></script>
         
         <script src="./js/controllers/MainCtrl.js"></script>
         <script src="./js/controllers/CustomerCtrl.js"></script>
+        <script src="./js/controllers/OrderCtrl.js"></script>
         <script src="./js/services/CustomerService.js"></script>
+        <script src="./js/appDirectives.js"></script>        
         <script src="./js/appRoutes.js"></script>
         <script src="./js/app.js"></script>
     </body>

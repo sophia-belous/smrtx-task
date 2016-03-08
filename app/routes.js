@@ -3,7 +3,6 @@ var Customer = require('./models/customer');
 var Order = require('./models/order');
 var mongoose = require('mongoose');
 var mongodb = mongoose.connection;
-var fs = require('fs');
 
 module.exports = function(app) {
     
@@ -84,9 +83,6 @@ module.exports = function(app) {
                 
                 res.json({message: 'Order created'});
             });
-            
-            customer.orders.push(order);
-            customer.save();
        });
     });
     

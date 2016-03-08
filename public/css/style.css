@@ -1,0 +1,18 @@
+.card-media {
+    background-color: #999999; 
+}
+md-card-actions.layout-align-end-center.layout-row {
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.order-item .face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 48px;
+  margin: 16px;
+}
+
+button.md-fab.md-button.md-ink-ripple {
+    padding: 4px 4px;        
+}
