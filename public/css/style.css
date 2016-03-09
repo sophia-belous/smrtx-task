@@ -5,13 +5,20 @@ md-card-actions.layout-align-end-center.layout-row {
     padding-right: 10px;
     padding-bottom: 10px;
 }
-
 .face {
   border-radius: 30px;
   width: 48px;
   margin: 16px;
 }
-
 button.md-fab.md-button.md-ink-ripple {
     padding: 4px 4px;        
+}
+.md-secondary.first {
+    right: 110px;
+}
+.md-subhead.phone {
+    font-size: 10px;
+}
+.ng-message.name-message {
+    font-size: 12px;
 }

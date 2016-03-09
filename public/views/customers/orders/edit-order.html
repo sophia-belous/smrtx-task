@@ -1,24 +1,24 @@
-<div layout="column" ng-cloak>
+<div layout="column">
     <md-content layout-padding>
         <form name="orderForm">
             <div>
                 <md-input-container class="md-block">
-                    <label>Order description</label>
+                    <label>Description</label>
                     <textarea required name="orderDescription" ng-model="order.description" md-maxlength="150" rows="5" md-select-on-focus></textarea>
                     <div ng-messages="orderForm.orderDescription.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block">
-                    <label>Order Price</label>
-                    <input required type="number"  name="orderPrice" ng-model="order.price">
+                    <label>Price (USD)</label>
+                    <input required type="number" step="any" name="orderPrice" ng-model="order.price">
                     <div ng-messages="orderForm.orderPrice.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
             </div>            
             <div layout layout-sm="column">
-                <md-button class="md-raised md-primary" ng-click="updateOrder()">
+                <md-button ng-disabled="orderForm.$invalid" class="md-raised md-primary" ng-click="updateOrder()">
                     Save changes
                 </md-button>
             </div>

@@ -33,6 +33,8 @@
         }
         
         function CustomerEditController($scope, $state, $stateParams, Customer) {
+            $scope.formMode = 'edit';
+            $scope.initialCustomerName = $stateParams.customer_name;
             $scope.customer = {};
             Customer.getOne($stateParams.customer_name, function(customer) {
                 $scope.customer = customer;
@@ -46,6 +48,7 @@
         }
         
         function CustomerAddController($scope, $state, $stateParams, Customer) {
+            $scope.formMode = 'add';
             $scope.customer = {};
                 
             $scope.addCustomer = function() {

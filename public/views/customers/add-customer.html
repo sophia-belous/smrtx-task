@@ -1,22 +1,26 @@
 <div layout="column" ng-cloak>
     <md-content layout-padding>
         <form name="customerForm">
-            <div>
-                <md-input-container class="md-block">
+            <div layout-padding>
+                 <md-input-container class="md-block">
                     <label>Customer Logo</label>
                     <input required name="customerLogo" ng-model="customer.logo">
                     <div ng-messages="customerForm.customerLogo.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
-                <md-input-container class="md-block">
+            </div>
+            <div layout-gt-sm="row" layout-padding>
+                <md-input-container>
                     <label>Customer Name</label>
-                    <input required  name="customerName" ng-model="customer.name">
+                    <input required wm-customername name="customerName" ng-model="customer.name">
                     <div ng-messages="customerForm.customerName.$error">
                         <div ng-message="required">This is required.</div>
+                        <div ng-message="customername">This username is already taken!</div>
+                        <div class="ng-message name-message" ng-show="customerForm.customerName.$pending.customername">Checking if this name is available...</div>
                     </div>
                 </md-input-container>
-                <md-input-container class="md-block">
+                <md-input-container>
                     <label>Customer Email</label>
                     <input required type="email" name="customerEmail" ng-model="customer.email"
                         minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
@@ -26,9 +30,19 @@
                         </div>
                     </div>
                 </md-input-container>
+            </div>
+            <div layout-padding>
+                <md-input-container class="md-block">
+                    <label>Phone Number</label>
+                    <input required name="phone" ng-model="customer.phone" ng-pattern="/^\+\d{3}\(\d{2}\)\d{3}-\d{2}-\d{2}$/" />
+                    <div class="hint" ng-show="showHints">+###(##)###-##-##</div>
+                    <div ng-messages="customerForm.phone.$error" ng-hide="showHints">
+                        <div ng-message="pattern">+###(##)###-##-## - Please enter a valid phone number.</div>
+                    </div>
+                </md-input-container>
             </div>            
             <div layout layout-sm="column">
-                <md-button class="md-raised md-primary" ng-click="addCustomer()">
+                <md-button ng-disabled="customerForm.$invalid || customerForm.$pending" class="md-raised md-primary" ng-click="addCustomer()">
                     Save changes
                 </md-button>
             </div>

@@ -12,7 +12,7 @@
             });
         }
     
-        function Customer(CustomerRestangular) {        
+        function Customer(CustomerRestangular, $q, $timeout) {        
             var Customer = CustomerRestangular.all('customers');
             
             return {
@@ -25,7 +25,7 @@
                 getOneOrder: getOneOrder,
                 addOrder: addOrder,
                 updateOrder: updateOrder,
-                removeOrder: removeOrder                
+                removeOrder: removeOrder
             };
             
                 function getOne(customerName, callback) {
@@ -66,6 +66,6 @@
             
             function removeOrder(customerName, orderId) {
                 return CustomerRestangular.one('customers', customerName).all('orders').one(orderId).remove();
-            }       
+            }            
     };    
 })();
