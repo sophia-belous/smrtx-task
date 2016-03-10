@@ -3,6 +3,7 @@ var validator = require('express-validator');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var path = require('path');
 var multer = require('multer');
 var crypto = require('crypto');
 var app = express();

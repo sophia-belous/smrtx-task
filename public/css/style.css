@@ -1,6 +1,4 @@
-.card-media {
-    background-color: #999999; 
-}
+
 md-card-actions.layout-align-end-center.layout-row {
     padding-right: 10px;
     padding-bottom: 10px;
@@ -21,4 +19,9 @@ button.md-fab.md-button.md-ink-ripple {
 }
 .ng-message.name-message {
     font-size: 12px;
+}
+
+md-card md-card-title md-card-title-media .md-media-lg {
+    width: auto;
+    height: auto;
 }

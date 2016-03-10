@@ -37,8 +37,25 @@ module.exports = function(app) {
     app.get('/api/customers', function(req, res) {
         Customer.find(function(err, customers) {
             if (err) res.send(err);
-            
-            res.json(customers);
+            var customersCopy = [];
+            for (var i = 0; i < customers.length; i++) {
+                var element = customers[i];
+                console.log(element.logo.data);
+                var base64 = new Buffer(element.logo.data, 'base64').toString('ascii');            
+                
+                customersCopy.push({
+                    name: element.name,
+                    email: element.email,
+                    phone: element.phone,
+                    logo: {
+                        data: base64,
+                        filename: element.logo.filename,
+                        contentType: element.logo.contentType
+                    }
+                });
+                
+            }            
+            res.json(customersCopy);
         });
     });
     
@@ -69,9 +86,6 @@ module.exports = function(app) {
     app.get('/api/customers/:customer_name', function(req, res) {
         Customer.findOne({name: req.params.customer_name}, function(err, customer) {
             if (err) res.send(err);
-            
-            var base64data = new Buffer(customer.logo.data).toString('base64');
-            customer.logo.data = base64data;
             res.json(customer);
         });                
     });
@@ -199,9 +213,11 @@ module.exports = function(app) {
 		Customer.findOne({name: req.params.customer_name}, function(err, customer) {
             if (err) res.send(err);
             
-            customer.logo.data = fs.readFileSync(req.file.path);
+            customer.logo.data = fs.readFileSync(req.file.path, 'base64');
             customer.logo.contentType = req.file.mimetype;
             customer.logo.filename = req.file.filename;
+            
+            fs.unlinkSync(req.file.path);
             
             customer.save(function(err) {
                 if (err) return err;
