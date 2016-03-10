@@ -4,5 +4,5 @@
     <md-button  ui-sref="addCustomer" class="md-raised md-primary" aria-label="Add new customer">Add new Customer</md-button>
 </div> 
 <md-content  class="md-padding" layout="row" layout-wrap>
-    <wm-customer style="width: 400px" ng-repeat="customer in customers"></wm-customer>
+    <wm-customer style="width: 400px" ng-repeat="customer in customers | orderBy: 'name'"></wm-customer>
 </md-content>

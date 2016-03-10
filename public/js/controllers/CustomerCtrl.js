@@ -6,7 +6,7 @@
         .controller('CustomerEditController', CustomerEditController)
         ;
      
-        function CustomerController($scope, $mdDialog, Customer) {
+        function CustomerController($scope, $mdDialog, Customer, $state) {
             Customer.getAll(function(customers) {
                 $scope.customers = customers.plain();
                 console.log($scope.customers);
@@ -25,7 +25,7 @@
                 $mdDialog.show(confirm)
                     .then(function() {
                         Customer.remove(customerName);
-                        $scope.customers.splice(index, 1);
+                        $state.reload();
                     }, function() {
                         $scope.status = 'You decided to keep your debt.';
                     });

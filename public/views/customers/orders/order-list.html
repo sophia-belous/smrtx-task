@@ -1,10 +1,15 @@
 <div class="md-toolbar-tools">
     <h2><span>Orders of {{customerName}}</span></h2>
+    <span flex></span>    
+    <md-input-container class="md-block search">
+        <label>Search</label>
+        <input type="search" ng-model="searchText">
+    </md-input-container>
     <span flex></span>
     <md-button  ui-sref="addOrder({ customer_name: customerName})" class="md-raised md-primary" aria-label="Add new customer">Add new Order</md-button>
 </div> 
 <md-content>
     <md-list>
-        <wm-order ng-repeat="order in orders"></wm-order>        
+        <wm-order ng-repeat="order in orders | filter: searchText"></wm-order>        
     </md-list>
 </md-content>

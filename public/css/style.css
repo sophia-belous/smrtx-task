@@ -8,6 +8,10 @@ md-card-actions.layout-align-end-center.layout-row {
   width: 48px;
   margin: 16px;
 }
+.logo.face {
+    width: 70px;
+    border-radius: 70px;    
+}
 button.md-fab.md-button.md-ink-ripple {
     padding: 4px 4px;        
 }
@@ -24,4 +28,8 @@ button.md-fab.md-button.md-ink-ripple {
 md-card md-card-title md-card-title-media .md-media-lg {
     width: auto;
     height: auto;
+}
+
+md-input-container.md-block.search {
+    margin-top: 65px;
 }
