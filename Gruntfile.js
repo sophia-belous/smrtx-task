@@ -36,7 +36,8 @@ module.exports = function(grunt) {
         },
         wiredep: {
             task : {
-                src: ['public/views/index.html']
+                src: ['public/views/index.html'],
+                exclude: [/animate.css/, /angular-material-icons.css/]
             }
         }
     });
