@@ -1,5 +1,6 @@
 var path = require('path');
 var util = require('util');
+var fs = require('fs');
 var Customer = require('./models/customer');
 var Order = require('./models/order');
 var mongoose = require('mongoose');
@@ -42,6 +43,9 @@ module.exports = function(app) {
     });
     
     app.post('/api/customers', function(req, res) {
+        
+        console.log(req.body);
+        
         req.checkBody(customerBody);
         
         var errors = req.validationErrors();
@@ -51,11 +55,10 @@ module.exports = function(app) {
         }
         var customer = new Customer({
             name: req.body.name,
-            logo: req.body.logo,
             email: req.body.email,
             phone: req.body.phone
         });
-        
+                
         customer.save(function(err) {
             if (err) res.send(err);
 
@@ -67,6 +70,8 @@ module.exports = function(app) {
         Customer.findOne({name: req.params.customer_name}, function(err, customer) {
             if (err) res.send(err);
             
+            var base64data = new Buffer(customer.logo.data).toString('base64');
+            customer.logo.data = base64data;
             res.json(customer);
         });                
     });
@@ -151,7 +156,7 @@ module.exports = function(app) {
        });
     });
     
-      app.get('/api/customers/:customer_name/orders/:order_id', function(req, res) {
+    app.get('/api/customers/:customer_name/orders/:order_id', function(req, res) {
         Order.findOne({_id: req.params.order_id, _customername: req.params.customer_name}, function(err, order) {
             if (err) res.send(err);
             
@@ -188,6 +193,22 @@ module.exports = function(app) {
 			
 			res.json({message: 'Successfully Deleted'})
 		});
+	});
+    
+    app.post('/api/customers/:customer_name/uploads', function(req, res) {
+		Customer.findOne({name: req.params.customer_name}, function(err, customer) {
+            if (err) res.send(err);
+            
+            customer.logo.data = fs.readFileSync(req.file.path);
+            customer.logo.contentType = req.file.mimetype;
+            customer.logo.filename = req.file.filename;
+            
+            customer.save(function(err) {
+                if (err) return err;
+                
+                res.sendStatus(200);
+            });
+        })
 	});
     
     app.get('*', function(req, res) {

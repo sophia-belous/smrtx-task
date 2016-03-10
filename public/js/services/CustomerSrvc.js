@@ -12,7 +12,7 @@
             });
         }
     
-        function Customer(CustomerRestangular, $q, $timeout) {        
+        function Customer(CustomerRestangular, $q, $timeout, $http) {        
             var Customer = CustomerRestangular.all('customers');
             
             return {
@@ -25,7 +25,8 @@
                 getOneOrder: getOneOrder,
                 addOrder: addOrder,
                 updateOrder: updateOrder,
-                removeOrder: removeOrder
+                removeOrder: removeOrder,
+                uploadLogo: uploadLogo
             };
             
                 function getOne(customerName, callback) {
@@ -36,8 +37,8 @@
                 return Customer.getList().then(callback);
             }
             
-            function add(customerData, callback) {
-                return Customer.post(customerData).then(callback);
+            function add(customerData) {
+                return Customer.post(customerData);
             }
         
             function update(customerName, customerData, callback) {
@@ -67,5 +68,14 @@
             function removeOrder(customerName, orderId) {
                 return CustomerRestangular.one('customers', customerName).all('orders').one(orderId).remove();
             }            
+            function uploadLogo(file, customerName, callback) {
+                var formData = new FormData();
+                formData.append('file', file);
+                
+                return CustomerRestangular.one('customers', customerName).all('uploads')
+                    .withHttpConfig({transformRequest: angular.identity})
+                    .customPOST(formData, undefined, undefined, {'Content-Type': undefined });
+            }
+            
     };    
 })();

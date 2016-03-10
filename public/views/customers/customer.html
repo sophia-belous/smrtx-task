@@ -6,14 +6,16 @@
             <span class="md-subhead phone">{{customer.phone}}</span>
         </md-card-title-text>
         <div layout="column" layout-align="start center" flex>
-            <md-button ui-sref="editCustomer({ customer_name: customer.name })" class="md-raised md-primary">Edit</md-button>
-            <md-button ng-click="deleteCustomer(customer.name, $index, $event)"  class="md-fab md-mini md-warn md-hue-2">
+            <md-button ui-sref="editCustomer({ customer_name: customer.name })" class="md-raised md-primary" aria-label="Edit">Edit</md-button>
+            <md-button ng-click="deleteCustomer(customer.name, $index, $event)"  class="md-fab md-mini md-warn md-hue-2" aria-label="Delete">
                 <ng-md-icon icon="clear" style="fill: white" size="30"></ng-md-icon>
             </md-button>
             <span flex></span>
         </div>
         <md-card-title-media>
-            <div class="md-media-lg card-media"></div>
+            <div class="md-media-lg card-media">
+                <img ng-src="data:{{customer.logo.mimetype}};base64, {{customer.logo.data}}" alt="">
+            </div>
         </md-card-title-media>
     </md-card-title>
     <md-card-actions layout="row" layout-align="end center">

@@ -51,9 +51,14 @@
             $scope.formMode = 'add';
             $scope.customer = {};
                 
-            $scope.addCustomer = function() {
-                Customer.add($scope.customer, function() {
-                    $state.go('customers');
+            $scope.addCustomer = function(photoFile) {       
+                Customer.add($scope.customer).then(function() {
+                    console.log($scope.customer);
+                    console.log(photoFile);
+                    Customer.uploadLogo(photoFile, $scope.customer.name).then(function() {
+                        $state.go('customers');                        
+                    });
+                    
                 });         
             };     
         }

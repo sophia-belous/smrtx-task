@@ -1,13 +1,10 @@
 <div layout="column" ng-cloak>
     <md-content layout-padding>
-        <form name="customerForm">
+        <form name="customerForm" enctype="multipart/form-data" >
             <div layout-padding>
                  <md-input-container class="md-block">
-                    <label>Customer Logo</label>
-                    <input required name="customerLogo" ng-model="customer.logo">
-                    <div ng-messages="customerForm.customerLogo.$error">
-                        <div ng-message="required">This is required.</div>
-                    </div>
+                    <label>Logo</label>
+                    <input type="file" name="customerLogo" required file-model="photoFile" >
                 </md-input-container>
             </div>
             <div layout-gt-sm="row" layout-padding>
@@ -42,7 +39,7 @@
                 </md-input-container>
             </div>            
             <div layout layout-sm="column">
-                <md-button ng-disabled="customerForm.$invalid || customerForm.$pending" class="md-raised md-primary" ng-click="addCustomer()">
+                <md-button ng-disabled="customerForm.$invalid || customerForm.$pending" class="md-raised md-primary" ng-click="addCustomer(photoFile)">
                     Save changes
                 </md-button>
             </div>
