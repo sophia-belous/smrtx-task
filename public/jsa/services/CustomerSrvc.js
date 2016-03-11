@@ -29,7 +29,7 @@
                 uploadLogo: uploadLogo
             };
             
-                function getOne(customerName, callback) {
+            function getOne(customerName, callback) {
                 return CustomerRestangular.one('customers', customerName).get().then(callback);
             }
             

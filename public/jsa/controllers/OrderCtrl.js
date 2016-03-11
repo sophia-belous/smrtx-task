@@ -34,17 +34,17 @@
         }
         
         function OrderEditController($scope, $state, $stateParams, Customer) {
-                $scope.order = {};
-                Customer.getOneOrder($stateParams.customer_name, $stateParams.order_id, function(order) {
-                    $scope.order = order;
-                    
-                    $scope.updateOrder = function() {
-                        Customer.updateOrder($stateParams.customer_name, $stateParams.order_id, $scope.order, function() {
-                            $state.go('orders', {customer_name: $stateParams.customer_name});
-                        });         
-                    };   
-                });                                             
-            }
+            $scope.order = {};
+            Customer.getOneOrder($stateParams.customer_name, $stateParams.order_id, function(order) {
+                $scope.order = order;
+                
+                $scope.updateOrder = function() {
+                    Customer.updateOrder($stateParams.customer_name, $stateParams.order_id, $scope.order, function() {
+                        $state.go('orders', {customer_name: $stateParams.customer_name});
+                    });         
+                };   
+            });                                             
+        }
             
         function OrderAddController($scope, $state, $stateParams, Customer) {
             $scope.order = {};

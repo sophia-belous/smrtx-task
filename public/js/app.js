@@ -1,4 +1,14 @@
 (function() {
-    'use strict';
-    angular.module('smrtxApp', [ 'restangular', 'ui.router','ngMaterial', 'ngMessages', 'ngMdIcons', 'appDirectives', 'appFilters', 'appRoutes', 'MainCtrl', 'CustomerCtrl', 'OrderCtrl', 'CustomerSrvc', 'file-model']);
+	'use strict';
+	angular.module('smrtxApp', [
+		'restangular',
+		'ui.router',
+		'ngMaterial',
+		'ngMessages',
+		'ngMdIcons',
+		'common',
+		'customer',
+		'order',
+		'file-model'
+	]);
 })();
