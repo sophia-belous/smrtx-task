@@ -5,7 +5,7 @@
 	function wmOrder() {
 		return {
 			restrict: 'E',
-			templateUrl: 'views/customers/customer.html',
+			templateUrl: 'views/orders/order.html',
 			scope: false,
 			replace: true   
 		};
