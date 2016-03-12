@@ -3,8 +3,6 @@
 	angular.module('order').controller('OrderController', OrderController);
 	
 	function OrderController($scope, $stateParams, $mdDialog, Order) {
-		 $scope.testline = 'It is customer controller line!'
-		
 		$scope.orders = [];      
 		$scope.customerName =  $stateParams.customer_name; 
 

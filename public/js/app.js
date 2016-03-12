@@ -7,6 +7,7 @@
 		'ngMessages',
 		'ngMdIcons',
 		'common',
+        'ui.utils.masks',
 		'customer',
 		'order',
 		'file-model'

@@ -29,8 +29,7 @@ module.exports = function(app) {
             errorMessage: 'This is required.'
         },
         'price': {
-            notEmpty: true,
-            isNumeric: { errorMessage: 'Enter a price number.' }
+            notEmpty: true
         }
     };
     
@@ -40,7 +39,6 @@ module.exports = function(app) {
             var customersCopy = [];
             for (var i = 0; i < customers.length; i++) {
                 var element = customers[i];
-                console.log(element.logo.data);
                 var base64 = new Buffer(element.logo.data, 'base64').toString('ascii');            
                 
                 customersCopy.push({
@@ -60,8 +58,6 @@ module.exports = function(app) {
     });
     
     app.post('/api/customers', function(req, res) {
-        
-        console.log(req.body);
         
         req.checkBody(customerBody);
         

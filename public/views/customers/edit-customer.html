@@ -4,7 +4,7 @@
             <div layout-gt-sm="row" layout-padding>
                 <md-input-container>
                     <label>Customer Name</label>
-                    <input required wm-customername name="customerName" ng-model="customer.name">
+                    <input required wm-customername name="customerName" ng-model="customer.name" ng-model-options="{ updateOn: 'default', debounce: { 'default': 500 } }">
                     <div ng-messages="customerForm.customerName.$error">
                         <div ng-message="required">This is required.</div>
                         <div ng-message="customername">This username is already taken!</div>

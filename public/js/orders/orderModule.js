@@ -1,4 +1,4 @@
 (function() {
 	'use strict';
-	angular.module('order', []);
+	angular.module('order', ['angularMoment']);
 })();

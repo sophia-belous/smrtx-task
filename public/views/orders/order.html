@@ -2,8 +2,8 @@
     <img ng-src="/uploads/slowface.gif" class="face">
     <div class="md-list-item-text">
         <h3>{{order.description}}</h3>
-        <p>{{order.price | currency:"$":0}}</p>
-        <p>{{order.date | daysAgo}}</p>
+        <p>{{order.price | currency}}</p>
+        <p am-time-ago="order.date"></p>
     </div>
         <md-button class="md-secondary first" ui-sref="editOrder({ customer_name: order._customername, order_id: order._id })">Edit</md-button> 
         <md-button class="md-secondary" ng-click="deleteOrder(order._id, $index, $event)">Delete</md-button> 
