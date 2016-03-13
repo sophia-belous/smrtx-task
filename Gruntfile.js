@@ -17,7 +17,7 @@ module.exports = function(grunt) {
                     'public/js/common/services/configuredRestangular.js',
                     'public/js/customers/services/customerSrvc.js',      
                     'public/js/orders/services/orderSrvc.js',
-                    'public/js/common/filters/daysAgoFilter.js',
+                    'public/js/customers/filters/phoneFormatFilter.js',
                     'public/js/orders/directives/wmOrder.js',
                     'public/js/customers/directives/wmCustomer.js',
                     'public/js/customers/directives/wmCustomername.js',

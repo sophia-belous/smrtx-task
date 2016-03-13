@@ -11,10 +11,9 @@
                 </md-input-container>
                 <md-input-container class="md-block">
                     <label>Price (USD)</label>
-                    <input required type="text" name="orderPrice" ng-model="order.price" ui-number-mask  ui-hide-group-sep min="1">
+                    <input required type="text" name="orderPrice" ng-model="order.price" ui-money-mask ui-hide-group-sep min="0">
                     <div ng-messages="orderForm.orderPrice.$error">
                         <div ng-message="required">This is required.</div>
-                        <div ng-message="ui-number-mask">Must be not negative</div>
                     </div>
                 </md-input-container>
             </div>            

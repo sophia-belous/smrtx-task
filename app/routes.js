@@ -29,7 +29,8 @@ module.exports = function(app) {
             errorMessage: 'This is required.'
         },
         'price': {
-            notEmpty: true
+            notEmpty: true,
+            isDecimal: { errorMessage: 'Must be decimal' }
         }
     };
     

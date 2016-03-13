@@ -3,7 +3,7 @@
         <form name="customerForm">
             <div layout-gt-sm="row" layout-padding>
                 <md-input-container>
-                    <label>Customer Name</label>
+                    <label>Name</label>
                     <input required wm-customername name="customerName" ng-model="customer.name" ng-model-options="{ updateOn: 'default', debounce: { 'default': 500 } }">
                     <div ng-messages="customerForm.customerName.$error">
                         <div ng-message="required">This is required.</div>
@@ -12,12 +12,12 @@
                     </div>
                 </md-input-container>
                 <md-input-container>
-                    <label>Customer Email</label>
-                    <input required type="email" name="customerEmail" ng-model="customer.email"
-                        minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                    <label>Email</label>
+                    <input required type="email" name="customerEmail" ng-model="customer.email" ng-pattern="/^.+@.+\..+$/"/>
                     <div ng-messages="customerForm.customerEmail.$error" role="alert">
-                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                            Your email must be between 10 and 100 characters.
+                        <div ng-message="required">This is required.</div>                        
+                        <div ng-message="pattern">
+                            Your email not correct.
                         </div>
                     </div>
                 </md-input-container>
@@ -25,11 +25,9 @@
             <div layout-padding>
                 <md-input-container class="md-block">
                     <label>Phone Number</label>
-                    <input required name="customerPhone" ng-model="customer.phone" ng-pattern="/^\+\d{3}\(\d{2}\)\d{3}-\d{2}-\d{2}$/" />
-                    <div class="hint" ng-show="showHints">+###(##)###-##-##</div>
+                    <input required name="customerPhone" ng-model="customer.phone" ui-mask="999(99)999-99-99" placeholder="Write a phone" ui-mask-placeholder ui-mask-placeholder-char="space"/>
                     <div ng-messages="customerForm.customerPhone.$error" ng-hide="showHints">
                         <div ng-message="required">This is required.</div>
-                        <div ng-message="pattern">+###(##)###-##-## - Please enter a valid phone number.</div>
                     </div>
                 </md-input-container>
             </div>            

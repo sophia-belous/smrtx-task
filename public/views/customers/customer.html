@@ -3,7 +3,7 @@
         <md-card-title-text>
             <span class="md-headline">{{customer.name | uppercase}}</span>  
             <span class="md-subhead">{{customer.email}}</span>
-            <span class="md-subhead phone">{{customer.phone}}</span>
+            <span class="md-subhead phone">{{customer.phone | phoneFormat}}</span>
         </md-card-title-text>
         <div layout="column" layout-align="start center" flex>
             <md-button ui-sref="editCustomer({ customer_name: customer.name })" class="md-raised md-primary" aria-label="Edit">Edit</md-button>

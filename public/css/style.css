@@ -33,3 +33,6 @@ md-card md-card-title md-card-title-media .md-media-lg {
 md-input-container.md-block.search {
     margin-top: 65px;
 }
+.md-button.filename-label {
+    text-transform: lowercase;
+}

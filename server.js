@@ -14,14 +14,14 @@ var port = process.env.PORT || 8080;
 mongoose.connect(db.url);
 
 app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json', limit: '50mb' }));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true }));
+app.use(bodyParser.json({ type: 'application/vnd.api+json', limit: '100mb' }));
+app.use(bodyParser.urlencoded({limit: '100mb', extended: true }));
 app.use(validator());
 
 app.use(validator({
  customValidators: {
     isPhone: function(value) {
-        return /^\+\d{3}\(\d{2}\)\d{3}-\d{2}-\d{2}$/.test(value)
+        return /^\d{12}$/.test(value)
     }
  }
 }));
