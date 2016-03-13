@@ -9,6 +9,9 @@
 			Order.add($stateParams.customer_name, $scope.order).then(function() {
 				$state.go('orders', {customer_name: $stateParams.customer_name});
 			});         
-		};    
+		};
+        $scope.goBack = function() {
+            $state.go('orders', {customer_name: $stateParams.customer_name});
+        };    
 	}
 })();
