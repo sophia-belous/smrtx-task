@@ -2,7 +2,7 @@
 	'use strict';
 	angular.module('smrtxApp').config(appConfig);
 	
-	function appConfig($stateProvider, $locationProvider, RestangularProvider) {
+	function appConfig($stateProvider, $locationProvider, $urlRouterProvider, RestangularProvider) {
 		RestangularProvider.setBaseUrl('/api');
                 $stateProvider
                         .state('customers', {
@@ -17,7 +17,7 @@
                         })
                         .state('addCustomer', {
                                 url: '/add',
-                                templateUrl: 'views/customers/add-customer.html',
+                                templateUrl: 'views/customers/edit-customer.html',
                                 controller: 'CustomerAddController'
                         })
                         .state('editCustomer', {
@@ -42,7 +42,7 @@
                         })
                         .state('addOrder', {
                                 url: '/:customer_name/orders/add',
-                                templateUrl: 'views/orders/add-order.html',
+                                templateUrl: 'views/orders/edit-order.html',
                                 controller: 'OrderAddController'
                         })
                         .state('editOrder', {
@@ -55,6 +55,7 @@
                                     }
                                 }
                         });
-                $locationProvider.html5Mode(true);       
+                        $urlRouterProvider.otherwise('/');
+                        $locationProvider.html5Mode(true);       
 	}
 })();

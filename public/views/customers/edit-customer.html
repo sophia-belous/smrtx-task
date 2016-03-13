@@ -3,7 +3,15 @@
         <div layout-padding>
             <md-button class="md-raised md-primary" ui-sref="customers">Back</md-button> 
         </div>
-        <form name="customerForm">
+        <form name="customerForm" enctype="multipart/form-data" >
+            <div ng-hide="initialCustomerName" layout-padding>                
+                <label for="customerLogo" class="md-button md-raised md-primary">Choose photo</label>
+                <label class="md-button filename-label">{{photoFile.name}}</label>                    
+                <input ng-hide="true" class="md-button" type="file" name="customerLogo" id="customerLogo" ng-required='!initialCustomerName' file-model="photoFile" ng-model="photoFile">
+                <div ng-messages="customerForm.customerLogo.$error">
+                    <div ng-message="ng-required">This is required.</div>
+                </div>
+            </div>
             <div layout-gt-sm="row" layout-padding>
                 <md-input-container>
                     <label>Name</label>
@@ -28,14 +36,14 @@
             <div layout-padding>
                 <md-input-container class="md-block">
                     <label>Phone Number</label>
-                    <input required name="customerPhone" ng-model="customer.phone" ui-mask="999(99)999-99-99" placeholder="Write a phone" ui-mask-placeholder ui-mask-placeholder-char="space"/>
-                    <div ng-messages="customerForm.customerPhone.$error" ng-hide="showHints">
+                    <input required type="text" name="phone" ng-model="customer.phone" ui-mask="999(99)999-99-99" placeholder="Write a phone" ui-mask-placeholder ui-mask-placeholder-char="space"/>
+                    <div ng-messages="customerForm.phone.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
             </div>            
             <div layout layout-sm="column">
-                <md-button ng-disabled="customerForm.$invalid || customerForm.$pending" class="md-raised md-primary" ng-click="updateCustomer()">
+                <md-button ng-disabled="customerForm.$invalid || customerForm.$pending" class="md-raised md-primary" ng-click="updateCustomer(photoFile)">
                     Save changes
                 </md-button>
             </div>
