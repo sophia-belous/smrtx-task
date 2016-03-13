@@ -2,14 +2,10 @@
 	'use strict';
 	angular.module('order').controller('OrderController', OrderController);
 	
-	function OrderController($scope, $stateParams, $mdDialog, Order) {
-		$scope.orders = [];      
-		$scope.customerName =  $stateParams.customer_name; 
-
-		Order.getAll($stateParams.customer_name).then(function(orders) {
-			$scope.orders = orders.plain();
-		});        
-		
+	function OrderController($scope, $stateParams, $mdDialog, Order, ordersData) {
+        $scope.orders = ordersData.plain();
+		$scope.customerName = $stateParams.customer_name; 
+            
 		$scope.deleteOrder = function(orderId, index, event) {
 			var confirm = $mdDialog.confirm()
 				.title('Would you like to delete this order?')

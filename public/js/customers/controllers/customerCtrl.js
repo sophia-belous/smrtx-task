@@ -2,12 +2,9 @@
 	'use strict';
 	angular.module('customer').controller('CustomerController', CustomerController);
 	
-	function CustomerController($scope, $mdDialog, Customer, $state) {
-		Customer.getAll().then(function(customers) {
-			$scope.customers = customers.plain();
-		});
-		
-		$scope.customers = [];    
+	function CustomerController($scope, $mdDialog, Customer, $state, customersData) {
+
+        $scope.customers = customersData.plain();		
 		
 		$scope.deleteCustomer = function(customerName, index, event) {
 			var confirm = $mdDialog.confirm()
